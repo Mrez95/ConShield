@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ConShield</string>
+    <string name="trackee">trackee</string>
+    <string name="tracker">tracker</string>
+</resources>
