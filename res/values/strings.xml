@@ -3,4 +3,5 @@
     <string name="app_name">ConShield</string>
     <string name="trackee">trackee</string>
     <string name="tracker">tracker</string>
+    <string name="service_name">NotificationListenerService</string>
 </resources>

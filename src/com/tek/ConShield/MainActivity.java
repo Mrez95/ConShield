@@ -1,78 +1,50 @@
 package com.tek.ConShield;
 
-        import android.app.Activity;
-        import android.app.AlertDialog;
-        import android.content.DialogInterface;
-        import android.os.Bundle;
-        import android.R.layout;
-        import android.graphics.Color;
-        import android.hardware.Sensor;
-        import android.hardware.SensorEvent;
-        import android.hardware.SensorEventListener;
-        import android.hardware.SensorManager;
-        import android.os.Bundle;
-        import android.app.Activity;
-        import android.util.Log;
-        import android.view.Menu;
-        import android.view.View;
-        import android.widget.LinearLayout;
-        import android.widget.TextView;
+import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
-    /**
-     * Called when the activity is first created.
-     */
-    private boolean isTrackee = false;
-    private boolean isTracker = false;
+
+    private TextView txtView;
+    private NotificationReceiver nReceiver;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        //txtView = (TextView) findViewById(R.id.textView);
+        nReceiver = new NotificationReceiver();
+        IntentFilter filter = new IntentFilter();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        // Add the buttons
+        //filter.addAction("com.kpbird.nlsexample.NOTIFICATION_LISTENER_EXAMPLE");
+        filter.addAction("com.tek.ConShield.NOTIFICATION_LISTENER_EXAMPLE");
 
-        builder.setTitle("Who do you want to be?");
-
-        builder.setPositiveButton(R.string.trackee, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                isTrackee=true;
-                isTracker=false;
-
-                sendData(isTrackee, isTracker);
-            }
-        });
-
-        builder.setNegativeButton(R.string.tracker, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                isTracker=true;
-                isTrackee=false;
-
-                sendData(isTrackee, isTracker);
-            }
-        });
-
-
-        // Create the AlertDialog
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
+        registerReceiver(nReceiver,filter);
     }
 
-    public void sendData(boolean trackee, boolean tracker) {
-
-        if(tracker) {
-            //Log.d("ConShield", "tracker");
-
-        }
-        else if(trackee){
-            //Log.d("ConShield", "trackee");
-
-        }
-        else{
-            // neither were picked somehow
-        }
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(nReceiver);
     }
+
+    class NotificationReceiver extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String temp = intent.getStringExtra("notification_event") + "\n" + txtView.getText();
+            txtView.setText(temp);
+        }
+    }
+
+
+
 }
