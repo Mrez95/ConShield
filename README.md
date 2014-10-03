@@ -17,8 +17,7 @@ rich settings for personal customizations.
 Usage
 ------------
 
-To preview simply download the ZIP through git and import the project to your favourite Android IDE. Rememeber to include all the
-Google Maps dependencies 
+To preview simply download the ZIP through git and import the project file directly to your favourite Android IDE. Rememeber to include all of the Google Maps dependencies.
 
 License
 -------------
@@ -26,4 +25,4 @@ Copyright (c) 2014 Eddie Zhang.
 
 _________________________
 
-**The next iteration of the ConShield application will improve upon some of the shortcomings in this project. Coming soon to the Google Play Store!**
+**The next iteration of the ConShield application will improve upon some of the shortcomings in this project. Stay tuned for ConShield 2.0. Coming soon to the Google Play Store!**
