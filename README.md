@@ -3,7 +3,7 @@ ConShield
 
 Stay safe wherever you go. Personal security right in edge of your pockets.
 
-![alt='images/portfolio/Conshield/conshield-main-2.png'](images/portfolio/Conshield/conshield-main-2.png)
+![alt='http://bazhanga.com/images/portfolio/Conshield/conshield-main-2.png'](http://bazhanga.com/images/portfolio/Conshield/conshield-main-2.png)
 
 Features
 ------------
